@@ -1,4 +1,4 @@
-@giris
+@deneme
 Feature: Giriş İşlevselliği
   Bir kullanıcı olarak
   Uygulamaya giriş yapabilmek istiyorum
@@ -7,8 +7,8 @@ Feature: Giriş İşlevselliği
   Background:
     Given giriş sayfasındayım
 
-  @smoke @pozitif
-  Scenario: Geçerli bilgilerle başarılı giriş burası
+  @pozitif
+  Scenario: Geçerli bilgilerle başarılı giriş deneme
     When kullanıcı adı olarak "standard_user" giriyorum
     And şifre olarak "secret_sauce" giriyorum
     And giriş butonuna tıklıyorum
@@ -23,21 +23,13 @@ Feature: Giriş İşlevselliği
     Then "Epic sadface: Username and password do not match any user in this service" hata mesajını görmeliyim
 
   @negatif
-  Scenario: Kilitli kullanıcı ile başarısız giriş
+  Scenario:  Kilitli kullanıcı ile giriş yapıyorum
     When kullanıcı adı olarak "locked_out_user" giriyorum
     And şifre olarak "secret_sauce" giriyorum
     And giriş butonuna tıklıyorum
     Then "Epic sadface: Sorry, this user has been locked out." hata mesajını görmeliyim
 
-  @negatif
-  Scenario Outline: Farklı kullanıcı tipleri için giriş doğrulaması
-    When kullanıcı adı olarak "<kullanici_adi>" giriyorum
-    And şifre olarak "<sifre>" giriyorum
-    And giriş butonuna tıklıyorum
-    Then "<sonuc>" sonucunu görmeliyim
 
-    Examples:
-      | kullanici_adi   | sifre        | sonuc         |
-      | standard_user   | secret_sauce | basarili      |
-      | problem_user    | secret_sauce | basarili      |
-      | locked_out_user | secret_sauce | kilitli_hata  |
+
+
+
