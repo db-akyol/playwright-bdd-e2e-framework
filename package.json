@@ -1,15 +1,20 @@
 {
-  "name": "playwright-pom-ecommerce",
+  "name": "playwright-bdd-e2e-framework",
   "version": "1.0.0",
-  "description": "Playwright test automation project with POM structure for e-commerce testing",
+  "description": "Playwright + Cucumber (BDD) end-to-end test framework with Page Object Model for the SauceDemo e-commerce site",
   "scripts": {
     "bddgen": "bddgen",
-    "test": "npx bddgen && npx playwright test",
-    "test:headed": "npx bddgen && npx playwright test --headed",
-    "test:ui": "npx bddgen && npx playwright test --ui",
-    "test:smoke": "npx bddgen && npx playwright test --grep @smoke",
-    "test:login": "npx bddgen && npx playwright test --grep @login",
-    "report": "npx playwright show-report"
+    "test": "bddgen && playwright test",
+    "test:bdd": "bddgen && playwright test --project=bdd-chromium --project=bdd-firefox --project=bdd-webkit",
+    "test:spec": "playwright test --project=spec-chromium",
+    "test:headed": "bddgen && playwright test --headed --project=bdd-chromium",
+    "test:ui": "bddgen && playwright test --ui",
+    "test:smoke": "bddgen && playwright test --grep @smoke",
+    "test:login": "bddgen && playwright test --grep @giris",
+    "test:cart": "bddgen && playwright test --grep @sepet",
+    "test:checkout": "bddgen && playwright test --grep @odeme",
+    "typecheck": "tsc --noEmit",
+    "report": "playwright show-report"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^12.4.0",

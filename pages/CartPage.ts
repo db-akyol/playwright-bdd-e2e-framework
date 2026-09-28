@@ -34,9 +34,18 @@ export class CartPage extends BasePage {
   }
 
   /**
+   * Sepet sayfasının yüklenmesini bekle.
+   * count() otomatik beklemediği için sayım öncesinde çağrılır.
+   */
+  async waitForLoaded(): Promise<void> {
+    await this.checkoutButton.waitFor();
+  }
+
+  /**
    * Sepetteki ürün sayısını al
    */
   async getCartItemCount(): Promise<number> {
+    await this.waitForLoaded();
     return await this.cartItems.count();
   }
 
@@ -44,7 +53,8 @@ export class CartPage extends BasePage {
    * Belirli bir ürünün sepette olup olmadığını kontrol et
    */
   async isProductInCart(productName: string): Promise<boolean> {
-    const product = this.page.locator('.cart_item').filter({ hasText: productName });
+    await this.waitForLoaded();
+    const product = this.cartItems.filter({ hasText: productName });
     return await product.count() > 0;
   }
 

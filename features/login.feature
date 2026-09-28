@@ -8,7 +8,7 @@ Feature: Giriş İşlevselliği
     Given giriş sayfasındayım
 
   @smoke @pozitif
-  Scenario: Geçerli bilgilerle başarılı giriş burası
+  Scenario: Geçerli bilgilerle başarılı giriş
     When kullanıcı adı olarak "standard_user" giriyorum
     And şifre olarak "secret_sauce" giriyorum
     And giriş butonuna tıklıyorum
