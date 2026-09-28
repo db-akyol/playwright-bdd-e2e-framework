@@ -30,6 +30,7 @@ export class CartPage extends BasePage {
    * Sayfa başlığını al
    */
   async getPageTitle(): Promise<string> {
+    await this.waitForLoaded();
     return await this.pageTitle.textContent() || '';
   }
 
